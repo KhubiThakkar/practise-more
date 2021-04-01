@@ -30,26 +30,32 @@ endif
 # Makefile will not run target command if the name with file already exists. To override, use .PHONY
 .PHONY : all test coverage run clean doc
 
+# COMPILE CODE
 all:$(BUILD_DIR)
 	gcc -Wall -g ques.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
+# RUN CODE
 run: all
 	$(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
+# UNIT TESTING
 test: $(SRC) $(TEST_SRC)
 	gcc $^ $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 
+# COVERAGE CHECK
 coverage:${PROJECT_NAME}
 	gcc -fprofile-arcs -ftest-coverage ques.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 	gcov -a $(SRC)
 
+#MAKE DIRECTORY
 doc:
 	make -C doc
 $(BUILD_DIR):
 	mkdir $(BUILD_DIR)
 
+#CLEAN EXTRA FILES
 clean:
 	$(RM) $(call FixPath,$(BUILD_DIR)/*)
 	$(RM) *.gcno *gcda *.c.gcov
@@ -57,12 +63,20 @@ clean:
 	rmdir $(BUILD_DIR) 
 	#doc/html
 
+# VALGRIND MEMORY LEAK
 leak:all
 	valgrind $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
+# CPPCHECK STATIC TEST
 check:
 	cppcheck --enable=all $(INC)--suppress=missingIncludeSystem main.c $(SRC)
-	#--check-config 
+	#--check-config : when error description needed
+
+# GDB DEBUG
+debug:all
+	gdb $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+
+
 
 
 
