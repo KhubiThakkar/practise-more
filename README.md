@@ -7,9 +7,9 @@
 ### GITHUB
 [GitHub guides](https://guides.github.com/)  
 [GitHub training](https://lab.github.com/githubtraining/first-day-on-github)  
+[Update Forked Repo](https://medium.com/@topspinj/how-to-git-rebase-into-a-forked-repo-c9f05e821c8a)
 
 ### README FILE
-
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)  
 
 ### C
@@ -44,11 +44,9 @@
 [Manual](http://cppcheck.sourceforge.net/manual.pdf)  
 
 ### GDB DEBUGGER
-
 [Video explaining all CLI commands](https://www.youtube.com/watch?v=bWH-nL7v5F4)  
 
 ### DOXYGEN
-
 [Video for all about using Doxygen GUI](https://www.youtube.com/watch?v=TtRn3HsOm1s&t=295s)  
 [Few important settings to see in case of errors](https://www.doxygen.nl/manual/faq.html)  
 [Installation guide, it is incomplete for gui version](https://www.doxygen.nl/download.html)  
@@ -87,12 +85,10 @@
 [Useless for Linux](https://embeddedinventor.com/doxygen-tutorial-getting-started-using-doxygen-on-windows/)  
 
 ### VALGRIND
-
 [Good explaination on how to use valgrind, it is pretty simple anyways](https://embetronicx.com/tutorials/unit_testing/unit-testing-in-c-testing-with-unity/)  
 [Just CLI commands needed](https://github.com/stepin654321/MiniProject_Template/tree/master/Example_Programs/programming_concpets/tools_examples/valgrind-examples)  
 
 ### LINUX
-
 [Cisco Linux Unhatched](https://www.netacad.com/courses/os-it/ndg-linux-unhatched)  
 [Linux Survival](https://linuxsurvival.com/)  
 [Tutorial 1](https://linuxjourney.com/)  
