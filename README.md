@@ -7,7 +7,48 @@
 ### GITHUB
 [GitHub guides](https://guides.github.com/)  
 [GitHub training](https://lab.github.com/githubtraining/first-day-on-github)  
-[Update Forked Repo](https://medium.com/@topspinj/how-to-git-rebase-into-a-forked-repo-c9f05e821c8a)
+[Update Forked Repo](https://medium.com/@topspinj/how-to-git-rebase-into-a-forked-repo-c9f05e821c8a)  
+
+```
+1999  git checkout -b Khubichanges
+ 2000  git status
+ 2001  git add
+ 2002  git add .
+ 2003  git commit -m "Answer to Ques1a"
+ 2004  git remote add upstream https://github.com/stepin654321/MiniProject_Template.git
+ 2005  git fetch upstream
+ 2006  git log
+ 2007  git checkout master
+ 2008  git pull upstream
+ 2009  git pull upstream master
+ 2010  git log
+ 2011  git checkout Khubichanges 
+ 2012  git rebase master
+ 2013  git log
+ 2014  git push origin Khubichanges
+ ```
+
+ OR
+
+ ```
+ orig
+
+forked -> clone
+
+git remote add upstream <orig url>
+
+(master) - create new branch - (abc)
+
+make as many commits in the newbranch as u want. (abc)
+
+git checkout master
+
+git pull upstream master
+
+git checkout abc
+
+(abc) git rebase master
+```
 
 ### README FILE
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)  
