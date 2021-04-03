@@ -10,18 +10,24 @@ typedef struct info_t {
     char* git_link;
 } info_t;
 
+
+int comparator(const void* p, const void* q)
+{
+    return strcmp(((info_t*)p)->name,
+                  ((info_t*)q)->name);
+}
+
+
 int main(){
     FILE* fp = fopen("/home/khubithakkar/practise-more/Ques2b/data.csv", "r");
     if(fp == NULL){
         printf("Can't open the file");
     }
     else{
-        info_t *ptr = (info_t *) malloc (5 * sizeof(info_t));
-        info_t *p1;
+        info_t *ptr = (info_t *) malloc (4 * sizeof(info_t));
         char buffer[1024];
         int row = 0,column = 0;
         int i = 0;
-        p1 = ptr;
         while ((fgets(buffer,1024,fp)))
         {
             /* code */
@@ -29,32 +35,56 @@ int main(){
             char *value = strtok(buffer,",");
             row++;
             if(row == 1){
-                ptr++;
                 continue;
             }
             while (value != NULL)
             {
                 /* code */
                 if(column == 0){
-                    ptr->name = value;      // (ptr+i)->name
+                    (ptr+i)->name = value;      // (ptr+i)->name
                     printf("%s\n",(ptr+i)->name);
                 }
                 if(column == 1){
-                    ptr->email_id = value;      // (ptr+i)->name
+                    (ptr+i)->email_id = value;      // (ptr+i)->name
                     printf("%s\n",(ptr+i)->email_id);
                 }
                 if(column == 2){
-                    ptr->git_link = value;      // (ptr+i)->name
+                    (ptr+i)->git_link = value;      // (ptr+i)->name
                     printf("%s\n",(ptr+i)->git_link);
                 }
                 value = strtok(NULL, ", ");
                 column++;
 
             }
-            ptr++;
+            
+            i++;
             
         }
-        
+
+        //Before sorting structure
+        for(int i=0; i<4;i++){
+            printf("%s %s %s\n",(ptr+i)->name,(ptr+i)->email_id ,(ptr+i)->git_link);
+        }
+
+
+        qsort(ptr, 4, sizeof(info_t), comparator);
+        // info_t temp;
+        // int loop=0;
+        // while(loop < 4){
+        //     if(strcmp((ptr+loop+1)->name,(ptr+loop)->name)>0){
+        //         temp = *(ptr+loop);
+        //         *(ptr+loop) = *(ptr+loop+1);
+        //         *(ptr+loop+1) = temp;
+        //     }
+
+        // }
+
+
+        // After sorting structure
+        for(int i=0; i<4;i++){
+            printf("%s %s %s\n",(ptr+i)->name,(ptr+i)->email_id ,(ptr+i)->git_link);
+        }
+ 
     }
 }
 
