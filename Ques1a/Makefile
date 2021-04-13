@@ -44,10 +44,11 @@ test: $(SRC) $(TEST_SRC)
 	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 
 # COVERAGE CHECK
-coverage:${PROJECT_NAME}
-	gcc -fprofile-arcs -ftest-coverage ques.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+coverage:${PROJECT_NAME} $(BUILD_DIR)
+	gcc -fprofile-arcs -ftest-coverage  ques.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
-	gcov -a $(SRC)
+	mv *.gcda *.gcno src
+	gcov -a $(SRC) ques.c
 
 #MAKE DIRECTORY
 doc:
@@ -58,7 +59,9 @@ $(BUILD_DIR):
 #CLEAN EXTRA FILES
 clean:
 	$(RM) $(call FixPath,$(BUILD_DIR)/*)
-	$(RM) *.gcno *gcda *.c.gcov
+	$(RM) *.c.gcov
+	$(RM) $(call FixPath,src/*.gcno)
+	$(RM) $(call FixPath,src/*.gcda)
 	#make clean -C doc
 	rmdir $(BUILD_DIR) 
 	#doc/html
